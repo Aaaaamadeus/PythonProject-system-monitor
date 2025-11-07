@@ -1,0 +1,9 @@
+interval: 1  #检查间隔
+cpu_threshold: 80 #cpu警告阈值
+mem_threshold: 85 #内存警告阈值
+target:
+  - type: http
+    url: "https://bilibili.com"  #测试网络服务
+  - type: port
+    host: "127.0.0.1"
+    port: 3306      #监控本机
