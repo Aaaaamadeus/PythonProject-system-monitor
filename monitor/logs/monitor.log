@@ -10,3 +10,5 @@
 2025-11-08 13:35:28 | WARNING  | untils.alert:4 - ⚠ ALERT:[93m[WARN][93m内存使用率超过警告阈值85%
 2025-11-08 13:35:31 | WARNING  | untils.alert:4 - ⚠ ALERT:[93m[WARN][93m内存使用率超过警告阈值85%
 2025-11-08 13:35:34 | WARNING  | untils.alert:4 - ⚠ ALERT:[93m[WARN][93m内存使用率超过警告阈值85%
+2025-11-08 17:19:57 | INFO     | __main__:59 - 监控脚本启动
+2025-11-08 17:20:43 | INFO     | __main__:59 - 监控脚本启动

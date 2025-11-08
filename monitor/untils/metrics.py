@@ -11,7 +11,7 @@ def collect_system_metrics():
     return {
         "CPU使用率:": psutil.cpu_percent(interval=config["interval"]),
         "内存使用率:": psutil.virtual_memory().percent,
-        "磁盘使用率": psutil.disk_usage("/").percent,
+        "磁盘使用率:": psutil.disk_usage("/").percent,
         }           #获取各项性能指标
 
 def check_http(url):
