@@ -11,6 +11,7 @@ cpu = config['cpu_threshold']
 memory = config['mem_threshold']
 disk = config['disk_threshold']
 targets = config['target']
+
 RED = "\033[91m"      # 错误
 GREEN = "\033[92m"    # 成功
 YELLOW = "\033[93m"   # 警告
@@ -38,21 +39,27 @@ def monitor():
     while True:
         collect_system_metrics()
         metrics = collect_system_metrics()
+        net_check = check_net_speed(interval)
+
+        logger.info(metrics)
+        logger.info(net_check)
+
+
+        time.sleep(check_gap)
+def alert_monitor():
+    while True:
+        metrics = collect_system_metrics()
         if check_http(url):
             pass
         else:
             the_alert(f"{RED}[ERROR]{RED}网络连接出现问题")
             return False
-        print(metrics)
         if metrics["CPU使用率:"] > cpu:
             the_alert(f"{YELLOW}[WARN]{YELLOW}cpu使用率超过警告阈值{cpu}%")
         if metrics["内存使用率:"] > memory:
             the_alert(f"{YELLOW}[WARN]{YELLOW}内存使用率超过警告阈值{memory}%")
         if metrics["磁盘使用率:"] > disk:
             the_alert(f"{YELLOW}[WARN]{YELLOW}磁盘使用率超过警告阈值{disk}%")
-
-
-        time.sleep(check_gap)
 
 
 if __name__ == '__main__':
