@@ -8,7 +8,7 @@ config = yaml.safe_load(
         'D:/PythonProject/monitor/config.yaml', 'r',encoding='utf-8'
     ))
 interval=config["interval"]
-net1 = psutil.net_io_counters()
+
 
 def collect_system_metrics():
     return {
@@ -36,6 +36,7 @@ def check_port(host,port):
         s.close()      #测试端口连接
 
 def check_net_speed(interval):
+    net1 = psutil.net_io_counters()
     time.sleep(interval)
     net2 = psutil.net_io_counters()
 
@@ -43,6 +44,6 @@ def check_net_speed(interval):
     recv_speed = (net2.bytes_recv - net1.bytes_recv) / 1024 / 1024 # KB/S
 
     return {
-        "上传速率": str(round(sent_speed/interval, 2))+"Mb/s",
-        "下载速率": str(round(recv_speed/interval, 2))+"Mb/s",
+        "上传速率": str(round(sent_speed/interval, 2))+"Mbp/s",
+        "下载速率": str(round(recv_speed/interval, 2))+"Mbp/s",
     }
